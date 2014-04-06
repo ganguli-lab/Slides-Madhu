@@ -1,0 +1,205 @@
+\documentclass[pdf]{beamer}
+
+%Subhi's styles
+%\usecolortheme{whale}
+%\usecolortheme{orchid}
+%\useinnertheme[shadow]{rounded}
+%\useoutertheme{infolines}
+
+%%Alternative
+%\usetheme{Warsaw}
+
+\usetheme{Madrid}
+
+
+\newcommand{\ra}{\rightarrow}
+
+
+
+\mode<presentation>{}
+
+
+\title[Physics of Learning]{Statistical Physics Perspectives on Optimal Learning}
+\subtitle{Advised during this work by Surya Ganguli}
+
+\author{Madhu Advani}
+
+\institute{Stanford University}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Introduction}
+
+\begin{block}{Motivation}
+
+
+\begin{itemize}
+\vspace{.1in}
+\item<2-5>{Consider Estimating $N$ parameters with $T$ samples}
+\vspace{.1in}
+\item<3-5>{Maximum Likelihood is guaranteed to be optimal for finite $N$ as $T\rightarrow \infty$: $ \frac{N}{T}\ra 0$}
+\vspace{.1in}
+\item<4-5>{For finite-sized problems, particularly  high dimensional problems, a more accurate limit is the high dimensional limit: $N,T\ra \infty$ with $\frac{N}{T}\ra \kappa$}
+\vspace{.1in}
+\item<5-5>{Because of the prevalence of MAP and Maximum Likelihood, can we understand their behavior in high dimensions and find better alternatives? }
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+
+%\begin{itemize}
+%    \item<2-3> Maximum Likelihood is provable optimal for inferring predictors when sample size $N$ is infinite.
+%    \vspace{.3in}
+%    \item<3> What happens when the number of samples $N$ and the number of predictors $P$ are both large, or approach infinity at approximately the same rate?
+%\end{itemize}
+
+%-----------Slide-----------------------------------
+\begin{frame}[t]{Problem Statement}
+
+    \begin{block}{Inference Formulation}
+
+    \parbox{.45\textwidth}{
+        Consider $y_a$ drawn from a distribution 
+        \begin{equation*}
+        y_a = \mathbf{X_a} \cdot \mathbf{w^0} + \epsilon_a
+        \end{equation*}
+        
+        
+    }
+    \parbox{.45\textwidth}{
+        
+        \begin{flushright}
+        Known: $y_a, \mathbf{X_a}$ \\
+        \vspace{.1in}
+        Unknown: $\epsilon_a \sim f, w^0 \sim g$ 
+        \end{flushright}
+    }
+    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
+
+    \end{block}
+
+    \vspace{.3in}
+
+    \begin{block}{M-estimation for Inference}
+        \begin{equation*}
+            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
+        \end{equation*}
+    \end{block}
+
+\end{frame}
+
+
+%--------------------Frame-------------------
+\begin{frame}
+\begin{block}
+The Maximum Likelihood estimate
+
+\begin{equation*}
+\mathbf{\hat{w}}_{\text{ML}}=\arg\max_{\mathbf{w^0}}{P\left(\mathbf{y},\mathbf{X}|\mathbf{w^0}\right)} =\arg \min_{\mathbf{w}}{\left[ \sum_{i} {-\log f\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}\right]}
+\end{equation*}
+
+makes no use of the bayesian prior information. Bayes rule gives us
+
+\begin{equation*}
+P(\mathbf{w^0}|\mathbf{X},\mathbf{y}) = \frac{P(\mathbf{X},\mathbf{y}|\mathbf{w^0})P(\mathbf{w^0})}{P(\mathbf{X},\mathbf{y})}
+\end{equation*}
+
+Our knowledge of the coefficient distribution $g$ allows us to compute the Maximum a Priori estimate
+
+
+\begin{equation*}
+\mathbf{\hat{w}_{\text{MAP}}} = \arg\max_{\mathbf{w^0}}{P(\mathbf{w^0}|\mathbf{X},\mathbf{y})} =\arg\min_{\mathbf{w}}{\left[\sum_i{-\log f(y_i - \mathbf{X}_i\cdot \mathbf{w})} +\sum_a{-\log{g(w_a)}}\right]}
+\end{equation*}
+
+\end{frame}
+%----------------------------------------------
+
+
+%----------------------------------------------
+
+
+
+%----------------------Slide----------------
+%\begin{frame}{Statistical Mechanics}
+%------------------------------------------
+
+%---------------Slide---------------------
+\begin{frame}{Introduction}
+    \begin{block}{Problem Formulation}
+
+        \parbox{.45\textwidth}{
+        General goal: estimate coefficients $\mathbf{w^0}$, minimizing MSE.
+        
+        
+        Consider $\tilde{y}_i$ drawn from
+
+        \begin{equation*}
+        \tilde{y}_i = h\left({\mathbf{X}_i \cdot \mathbf{w^0}} + \epsilon_i\right)
+        \end{equation*}
+        }
+    \end{block}
+\end{frame}
+%---------------------------
+
+
+
+
+%Assuming that $h$ is a known, invertible non-linearity, we have an equivalent linear regression problem
+%
+%\begin{equation*}
+%y_i = h^{-1} \left(\tilde{y}_i\right) = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i
+%\end{equation*}
+%}
+%\parbox{.47\textwidth}{
+%
+%
+%\begin{center}
+%\includegraphics[width=0.23\textwidth]{neuronInference_redo.pdf}
+%\end{center}
+%
+%\begin{flushright}
+%\small{e.g. Estimating functional connectivity or receptive fields}
+%\end{flushright}
+%
+%}
+%
+%\vspace{.3in}
+%\begin{itemize}
+%	\item{$\mathbf{X}_i\in \mathcal{R}^N$ are rows of the known design matrix $\mathbf{X}$ representing inputs to the system, and $\mathbf{y}\in \mathcal{R}^T$ are known outputs}
+%	\item{Unknown noise $\boldsymbol{\epsilon}\in \mathcal{R}^T$ drawn iid from a known distribution $f$}
+%	\item{Unknown coefficients $\mathbf{w^0}\in \mathcal{R}^N$ drawn iid from a known distribution $g$}
+%%	\item{Random design assumption on $\mathbf{X}$}
+%\end{itemize}
+%\end{block}
+%
+%\end{frame}
+%-------------------------------------------
+
+
+
+%----------------------Slide----------------
+%\begin{frame}{Optimal Inference}
+
+
+
+%\end{frame}
+%------------------------------------------
+
+
+
+
+
+
+
+
+
+
+\end{document} 
