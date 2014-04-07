@@ -388,18 +388,21 @@ How to choose $\rho$ to minimize $q$?
 
 
 %-------------------Frame---------------------
-\begin{frame}{Regularized M-estimation}
+\begin{frame}[t]{Regularized M-estimation}
+\note{Again we ask the same question, which M-estimator (strategy) minimizes q? Obviously it will depend on the distribution of noise and coefficients, in the next slide I'll show how.}
+\begin{equation*}
+y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad w_j^0\sim g, \epsilon_i \sim f
+\end{equation*}
 
-Make use of a prior g
-
+\vspace{.3in}
 \begin{equation*}
             \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
 \end{equation*}
 
-
+\vspace{.2in}
 \begin{center}
-        \includegraphics[width = .15\linewidth]{errorCircle.pdf}
-    \end{center}
+        \includegraphics[width = .25\linewidth]{errorCircle.pdf}
+\end{center}
 
 
 
@@ -455,15 +458,31 @@ Make use of a prior g
 
 %--------------------Frame-----------------------
 \begin{frame}{Unregularized M-estimator}
-
-
+    
+    
         \begin{center}
-            \includegraphics[width = .5\linewidth]{regularizedPlots.pdf}
+            \includegraphics[width = .7\linewidth]{regularizedPlots.pdf}
         \end{center}
+    
+
+\end{frame}
+%------------------------------------------------
 
 
+%--------------------Frame-----------------------
+\begin{frame}{M-estimator Comparison}
+
+
+\begin{center}
+    $\rho_{\text{MAP}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{MAP}}(x) = |x|$
+    
+    $ \rho_{\text{Ridge}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{Ridge}}(x) = \frac{x^2}{2}$
+\end{center}
+
+
+\vspace{.1in}
         \begin{center}
-            \includegraphics[width = .5\linewidth]{CompareM_est_redo.pdf}
+            \includegraphics[width = .55\linewidth]{CompareM_est_redo.pdf}
         \end{center}
 \end{frame}
 %------------------------------------------------

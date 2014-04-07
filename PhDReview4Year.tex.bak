@@ -180,7 +180,7 @@ E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
 \begin{equation*}
             \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
 \end{equation*}
-\vspace{.1in}        
+\vspace{.1in}
 
 \begin{block}{Applications}
 \begin{itemize}
@@ -232,9 +232,9 @@ P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\
 \begin{frame}{Replica Solution}
 
 
-\note{Sort of just flashing the form of the solution for the unregularized case. 
+\note{Sort of just flashing the form of the solution for the unregularized case.
 
-Falls out quite naturally from replica theory. 
+Falls out quite naturally from replica theory.
 
 
 Order parameters are important because $q_0$ is the average variance in each error spin.}
@@ -315,59 +315,160 @@ Put an example (soft thresholding) here
 
 %
 %-------------Slide---------------
-\begin{frame}
-\begin{minipage}{.45\textwidth}
-
-    \begin{block}{Order Parameters}
-        nothing here yet
-    \end{block}
-
-\end{minipage}
-\begin{minipage}{.45\textwidth}
+\begin{frame}{Analytic Estimator Error}
+How to choose $\rho$ to minimize $q$?
 
     \begin{center}
-        \includegraphics[width =.9in]{errorCircle.pdf}
+        \includegraphics[width = .3\linewidth]{errorCircle.pdf}
     \end{center}
 
-\end{minipage}
+
+    \begin{equation*}
+    \qav{\left(\prox_{c\rho}{(\sqrt{q} z + \epsilon)} -\sqrt{q}z -\epsilon\right)^2}_{z,\epsilon}= \kappa q
+    \end{equation*}
+
+    \begin{equation*}
+    \qav{\prox_{c\rho}'(\sqrt{q}z + \epsilon)}_{z, \epsilon} = 1-\kappa
+    \end{equation*}
+\end{frame}
+%----------------------------------------
+
+
+
+
+%-----------Slide-----------------------------------
+\begin{frame}[t]{Optimal Unregularized M-estimator}
+
+
+
+    \vspace{.2in}
+
+    \begin{block}{Optimal M-estimator}
+        \begin{align*}
+            \rho_{\text{opt}}(x) &= -\inf_y{\left[\ln(\zeta_{\hat{q}}(y))+\frac{(x-y)^2}{2 \hat{q}}\right]} & \zeta_{\hat{q}} &= f*\phi_{\hat{q}}
+        \end{align*}
+        \begin{align*}
+           \hat{q} = \min{q} \quad \quad \text{s.t.} \quad q I_{q} &=\kappa & I_{q} = \int_{-\infty}^{\infty}{\frac{\zeta_{q}'^2(y)}{\zeta_{q}(y)}dy}
+        \end{align*}
+
+
+        \begin{itemize}
+        \vspace{.1in}
+        \item $\hat{q}$ - best possible asymptotic MSE for a convex M-estimator is $\hat{q}$
+
+        \item Under log-concave noise $f$ assumption $\rho_{\text{opt}}$ is the optimal loss.
+
+        \item{Note: not maximum likelihood, and the $\rho$ varies with dimensionality $\kappa$.}
+        \end{itemize}
+
+    \end{block}
+
+\end{frame}
+%------------------------------------
+
+
+
+
+
+%--------------------Frame-----------------------
+\begin{frame}{Optimal Unregularized M-estimator}
+
+
+        \begin{center}
+            \includegraphics[width = .5\linewidth]{unRegNoiseOpt.pdf}
+        \end{center}
+
+
+        \begin{center}
+            \includegraphics[width = .5\linewidth]{opt_loss.pdf}
+        \end{center}
+
+\end{frame}
+%------------------------------------------------
+
+
+%-------------------Frame---------------------
+\begin{frame}{Regularized M-estimation}
+
+$w^0_j \sim  g$
+
+\begin{equation*}
+            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
+\end{equation*}
+
+
+\begin{center}
+        \includegraphics[width = .15\linewidth]{errorCircle.pdf}
+    \end{center}
 
 
 
 
 \end{frame}
-%----------------------------------------
-%
-%
-%
-%
-%
-%%-----------Slide-----------------------------------
-%\begin{frame}[t]{Unregularized M-estimators}
-%
-%
-%
-%    \vspace{.2in}
-%
-%    \begin{block}{Optimal M-estimator}
-%        \begin{align*}
-%            \rho_{\text{opt}}(x) &= -\inf_y{\left[\ln(\zeta_{\hat{q}}(y))+\frac{(x-y)^2}{2 \hat{q}}\right]} & \zeta_{\hat{q}} &= f*\phi_{\hat{q}}
-%        \end{align*}
-%        \begin{align*}
-%           \hat{q} = \min{q} \quad \quad \text{s.t.} \quad q I_{q} &=\kappa & I_{q} = \int_{-\infty}^{\infty}{\frac{\zeta_{q}'^2(y)}{\zeta_{q}(y)}dy}
-%        \end{align*}
-%
-%
-%        \begin{itemize}
-%        \vspace{.1in}
-%        \item Best possible asymptotic Mean squared error for any convex M-estimator is $\hat{q}$
-%            \vspace{.1in}
-%        \item log-concave noise $f$ assumption
-%        \end{itemize}
-%
-%    \end{block}
-%
-%\end{frame}
-%%------------------------------------
+%---------------------------------------------
+
+
+
+
+
+%------------------------Frame-------------------
+\begin{frame}{Regularized M-estimation}
+\note{We know we can do better if we have some prior on our signal, and in the regularized case we can again work out the replica solution}
+
+\begin{block}{Optimal Inference}
+\begin{equation*}
+ \rho_{\text{opt}}^R(x) =  -\inf_y{\left[ \ln(\zeta_{\tilde{q}_0}(y)) + \frac{(x-y)^2}{2 \tilde{q}_0}\right]}
+\end{equation*}
+\begin{equation*}
+\sigma_{\text{opt}}^{R}(x)=-\frac{\tilde{q}_0}{\tilde{a}}\inf_y{\left[ \ln(\xi_{\tilde{a}}(y)) +\frac{(x-y)^2}{2 \tilde{a}}\right]} \label{optReg}
+\end{equation*}
+
+%\begin{equation}
+%\begin{split}
+%\rho_{\text{opt}}^R(x) &= -\inf_y{\left[ \ln(\zeta_{\tilde{q}_0}(y)) + \frac{(x-y)^2}{2 \tilde{q}_0}\right]} \\
+%\sigma_{\text{opt}}^{R}(x) &= -\frac{\tilde{q}_0}{\tilde{a}}\inf_y{\left[ \ln(\xi_{\tilde{a}}(y)) +\frac{(x-y)^2}{2 \tilde{a}}\right]}\\
+%\label{nbOpt}
+%\end{split}
+%\end{equation}
+
+
+\begin{equation*}
+\begin{split}
+\tilde{q}_0,\tilde{a} &= \arg\min_{q_0,a}{q_0} \\
+\text{s.t. }\quad  a I_{q_0} & = \kappa,\quad a^2 J_a = a-q_0
+\label{unregopt}
+\end{split}
+\end{equation*}
+
+
+\begin{itemize}
+\item $\tilde{q}_0,\tilde{a}$ are smoothing parameters
+\item $\tilde{q}_0$ is the asymptotic MSE
+\item $f,g$ log concave
+\end{itemize}
+\end{block}
+\end{frame}
+%--------------------------------------------------
+
+
+
+
+%--------------------Frame-----------------------
+\begin{frame}{Unregularized M-estimator}
+
+
+        \begin{center}
+            \includegraphics[width = .5\linewidth]{regularizedPlots.pdf}
+        \end{center}
+
+
+        \begin{center}
+            \includegraphics[width = .5\linewidth]{CompareM_est_redo.pdf}
+        \end{center}
+\end{frame}
+%------------------------------------------------
+
+
 
 
 
