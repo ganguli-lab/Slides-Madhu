@@ -96,6 +96,24 @@ E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
 %-----------------------------
 
 
+%----------------Frame-------------------
+\begin{frame}{Maximum Likelihood}
+
+
+
+
+\end{frame}
+%----------------------------------
+
+
+
+
+
+
+
+
+
+
 %-----------------Frame-------------
 \begin{frame}[t]{Classical vs High Dimensional Optimal M-estimation}
 
@@ -117,191 +135,14 @@ E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
         \begin{itemize}
         \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
         \vspace{.1in}
-        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta_{\hat{q}_0}(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta_{\hat{q}_0} = f*\phi_{\hat{q}_0}$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
-        \vspace{.1in}
-        \end{itemize}
-    \end{block}
-\end{frame}
-%------------------------------------
-
-
-
-
-
-
-
-
-%------------------------------------------------
-
-%%---------------------Frame----------------
-%\begin{frame}{Background}
-%
-%\begin{block}{Motivation}
-%\begin{itemize}
-%\vspace{.2in}
-%\item{Consider Estimating $N$ parameters with $T$ samples}
-%\vspace{.2in}
-%\item{Maximum Likelihood is guaranteed to be optimal for finite $N$ as $T\rightarrow \infty$: $ \frac{N}{T}\ra 0$}
-%\vspace{.2in}
-%\item{A better approximation is the high dimensional limit: $N,T\ra \infty$ with $\frac{N}{T}\ra \kappa$} (Data Deluge)
-%\vspace{.2in}
-%\item{What is the best Inference Algorithm in this regime?}
-%
-%\end{itemize}
-%\end{block}
-%\end{frame}
-%%------------------------------------------------
-
-
-
-
-%-----------Slide-----------------------------------
-\begin{frame}[t]{M-estimation Problem Statement}
-
-    \begin{block}{Inference Formulation}
-
-    \parbox{.40\textwidth}{
-        Consider $y_i$ drawn from
-        \begin{equation*}
-        y_i = \mathbf{X_i} \cdot \mathbf{w^0} + \epsilon_i
-        \end{equation*}
-
-
-    }
-    \parbox{.55\textwidth}{
-
-        \begin{flushright}
-        Known: $\mathbf{y}\in \mathcal{R}^N, \mathbf{X}\in \mathcal{R}^{N \times P}$ \\
-        \vspace{.1in}
-        Unknown: $\boldsymbol{\epsilon} \in \mathcal{R}^N$, $\mathbf{w^0}\in \mathcal{R}^P$
-        \\
-               \vspace{.1in}
-        iid Known Distribution: $\epsilon_i \sim f, w^0_j \sim g$,
-
-        $X_{ij}\sim \mathcal{N}(0,\frac{1}{P})$
-        \end{flushright}
-    }
-    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
-    \end{block}
-
-
-    \begin{columns}
-
-    \begin{column}{.35\textwidth}
-        \includegraphics[width = .7\linewidth]{neuronInference.pdf}
-
-
-    \end{column}
-
-    \begin{column}{.60\textwidth}
-    \begin{block}{M-estimation}
-    \begin{equation*}
-        \mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{\left[ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}\right]}
-    \end{equation*}
-
-
-
-    \end{block}
-    E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
-    \end{column}
-
-
-
-    \end{columns}
-\end{frame}
-%------------------------------------
-
-
-
-
-%-----------Slide-----------------------------------
-\begin{frame}[t]{Low Dimensional Optimal M-estimation}
-    \note{First I'll describe what happen the classical (low-dimensional theory)}
-    \begin{block}{Classical}
-       \begin{itemize}
-        \item $N\ra \infty$, $P/N =\kappa \ra 0$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}} = -\ln f$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
-        \vspace{.1in}
-        \end{itemize}
-
-
-    \end{block}
-    \vspace{.3in}
-
-    \begin{columns}
-
-    \begin{column}{.35\textwidth}
-        \includegraphics[width = .7\linewidth]{neuronInference.pdf}
-
-
-    \end{column}
-
-    \begin{column}{.60\textwidth}
-        The optimal policy approaches Maximum Likelihood, satisfying Cramer-Rao bound.
-    \end{column}
-
-
-
-    \end{columns}
-
-
-\end{frame}
-%------------------------------------
-
-\begin{frame}[t]{M-estimation in the Data Deluge Regime}
-
-    \begin{block}{High Dimensional}
-        \begin{itemize}
-        \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
+        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta_{\hat{q}_0}(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
         \vspace{.1in}
         \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{\zeta'^2}{\zeta}}}$
         \vspace{.1in}
         \end{itemize}
     \end{block}
-
-    \vspace{.3in}
-    \begin{columns}
-
-    \begin{column}{.35\textwidth}
-        \includegraphics[width = .7\linewidth]{neuronInference.pdf}
-    \end{column}
-
-    \begin{column}{.60\textwidth}
-        The optimal policy is no longer Maximum Likelihood! A stronger inequality than Cramer-Rao bound holds.
-    \end{column}
-
-    \end{columns}
 \end{frame}
-
-
-\begin{frame}{Classical vs High Dimensional}
-
-\begin{itemize}
-       \vspace{.1in}
-     \item{Maximum Likelihood is the optimal M-estimator for $P/N\ra 0$}
-     \vspace{.1in}
-     \item{El Karoui, et. al. recently demonstrated new phenomena for $P/N \ra \kappa$ as $P,N \ra \infty$: Modified Loss Function and Confidence Intervals in the Big Data Limit}
-\end{itemize}
-
-
-\end{frame}
-
-
-
-
-
-
-
-
-
-
+%------------------------------------
 
 
 
@@ -333,71 +174,36 @@ E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
 
 
 
-%-----------Slide-----------------------------------
-\begin{frame}[t]{Background and Motivation}
-    \begin{block}{Background}
-        \begin{itemize}
-            \item{Maximum Likelihood is the optimal M-estimator for $P/N\ra 0$}
-            \item{El Karoui, et. al. recently demonstrated new phenomena for $P/N \ra \kappa$ as $P,N \ra \infty$: Modified Loss Function and Confidence Intervals in the Big Data Limit}
-        \end{itemize}
-    \end{block}
+%-------------Frame--------------------
+\begin{frame}{Motivation}
 
-    \begin{block}{Motivation}
-        \begin{itemize}
-            \item{Formulate and solve this optimization problem in a Statistical Physics framework}
-            \item{Maximum Likelihood and MAP are applied to High Dimensional Bio-informatics problems where they may give poor performance- can we quantify and optimize this?}
-            \item{ Deriving the Optimal regularized M-estimator: potential applications for big data inference and signal processing.}
-        \end{itemize}
-
-    \end{block}
-
-    \begin{equation*}
-        P(\mathbf{w^0}|\mathbf{X},\mathbf{y}) = \frac{P(\mathbf{X},\mathbf{y}|\mathbf{w^0})P(\mathbf{w^0})}{P(\mathbf{X},\mathbf{y})}
-    \end{equation*}
-
-    \begin{block}{Maximum a Priori}
-        \begin{equation*}
-            \small{\mathbf{\hat{w}_{\text{MAP}}} =\arg\min_{\mathbf{w}}{\left[\sum_i{-\log f(y_i - \mathbf{X}_i\cdot \mathbf{w})} +\sum_j{-\log{g(w_j)}}\right]}}
-        \end{equation*}
-    \end{block}
-
-\end{frame}
-%------------------------------------
-
-
-%--------------------Slide-----------
-\begin{frame}[t]{Inference Algorithm}
-
-    Beyond Maximum Likelihood and MAP
-    \vspace{.2in}
-
-    \begin{block}{M-estimation for Inference}
-        \begin{equation*}
+\begin{equation*}
             \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
-        \end{equation*}
-    \end{block}
+\end{equation*}
+\vspace{.1in}        
 
-    \vspace{.2in}
-    Note that:
+\begin{block}{Applications}
+\begin{itemize}
+\vspace{.1in}
+ \item{Maximum Likelihood (ML) and MAP commonly applied to High Dimensional Bio-informatics problems, where we should expect poor performance}
+     \vspace{.1in}
+ \item{Deriving/Understanding the Optimal M-estimator has potential applications for statistical inference and signal processing.}
+     \vspace{.1in}
+ \item{ Tractability of this form of optimization popular: Compressed Sensing, LASSO, Elastic Net}
+\end{itemize}
+\end{block}
 
-    \begin{itemize}
 
-        \item{This form allows us to encompasses MAP and ML}
-        \vspace{.1in}
-        \item {Assuming convex loss and regularization functions, this problem is tractable and solutions are unique}
-        \vspace{.1in}
-        \item{Examples include Compressed Sensing, Lasso, Elastic Net}
-    \end{itemize}
+%\includegraphics[width = .4\linewidth]{neuronInference.pdf}
+
 \end{frame}
-%------------------------------------
-
-
+%----------------------------------------
 
 
 %------------------------Frame------------
 \begin{frame}[t]{Statistical Physics Formulation}
-Goal: Define a spin glass system to solve M-estimator inference
-\pause
+Define a spin glass system to solve M-estimator inference
+
 \begin{block}{Spin Glass System}
 Define continuous spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$. Let the Energy of the system be a function of these spins
 
@@ -405,17 +211,11 @@ Define continuous spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$. Let the Energy of 
  E_{\boldsymbol{\Lambda}}(\mathbf{u})=\sum_i{\rho\left(\mathbf{X}_{i}\cdot \mathbf{u} +\epsilon_i\right)}+\sum_a{\sigma(w^0_a-u_a)}
 \end{equation*}
 
-%with Gibbs distribution
-
-
 This in turn induces an equilibrium probability distribution on the state
 
 \begin{align*}
 P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\boldsymbol{\Lambda}}} & Z_{\boldsymbol{\Lambda}} &= \int{e^{-\beta E_{\boldsymbol{\Lambda}} (\mathbf{u}) }du}
 \end{align*}
-
-
-%The solution of our M-estimator problem occurs in the low temperature limit, and convexity guarantees
 
 \begin{equation*}
 \lim_{\beta \rightarrow \infty} P_{G}(\mathbf{u}) = \delta\left(\mathbf{u} - \mathbf{w^0} +\mathbf{\hat{w}}\right)
@@ -428,14 +228,16 @@ P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\
 %------------------------------------
 
 
-
-
-
-
-
-%---------------------
+%------------Slide---------
 \begin{frame}{Replica Solution}
 
+
+\note{Sort of just flashing the form of the solution for the unregularized case. 
+
+Falls out quite naturally from replica theory. 
+
+
+Order parameters are important because $q_0$ is the average variance in each error spin.}
 
 \begin{block}{\begin{center}Coupled Equations Relating Order Parameters\end{center}}
 \begin{equation*}
@@ -448,31 +250,20 @@ P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\
 \end{equation*}
 \end{block}
 
+\vspace{.1in}
 
-
-
-\parbox{.40\textwidth}{
-\begin{block}{Order Parameters}
-$q =$
-$c =$
-\end{block}
-}\parbox{.38\textwidth}{
-\begin{center}	\includegraphics[width=0.5in]{errorCircle.pdf}
-\end{center}
-}
-
-%\parbox{.45\textwidth}{
-%\begin{center} \includegraphics[width=0.4\linewidth]{errorCircle.pdf}
-%\end{center}
-%}
-
-
+\begin{itemize}
+    \item $X_{ij}\in \mathcal{N}(0,1/P)$
+    \item $\rho$ convex
+    \item $\epsilon_i\sim f$ iid
+\end{itemize}
 
 \end{frame}
-
-
 %------------------------------
 
+
+
+%--------------Slide------------------
 \begin{frame}{Proximal Map}
 
 
@@ -489,23 +280,42 @@ prox_f(x) = \arg\min_y \left[\frac{(x-y)^2}{2} + f(y)\right]
 \end{block}
 \vspace{.2 in}
 
-\begin{itemize}
-\item{Note that both $f$ and $\prox_f$ are functions}
-\vspace{.2 in}
+Put an example (soft thresholding) here
 
-\item{Known for many functions: e.g. soft thresholding operator for L1 norm}
 
-\vspace{.2 in}
 
-\item{Used in proximal algorithms: minima of $f  \Leftrightarrow$ fixed points $ prox_f$}
+\note{ both $f$ and $\prox_f$ are functions,Known for many functions: e.g. soft thresholding operator for L1 norm. Used in proximal algorithms: minima of $f  \Leftrightarrow$ fixed points $ prox_f$}
 
-\end{itemize}
 
 \end{frame}
 %----------------------------------------
 
+
+
+
+
+
+
+
+%\parbox{.40\textwidth}{
+%\begin{block}{Order Parameters}
+%$q =$
+%$c =$
+%\end{block}
+%}\parbox{.38\textwidth}{
+%\begin{center}	\includegraphics[width=0.5in]{errorCircle.pdf}
+%\end{center}
+%}
+
+%\parbox{.45\textwidth}{
+%\begin{center} \includegraphics[width=0.4\linewidth]{errorCircle.pdf}
+%\end{center}
+%}
+
+
+%
 %-------------Slide---------------
-\begin{frame}{}
+\begin{frame}
 \begin{minipage}{.45\textwidth}
 
     \begin{block}{Order Parameters}
@@ -526,6 +336,45 @@ prox_f(x) = \arg\min_y \left[\frac{(x-y)^2}{2} + f(y)\right]
 
 \end{frame}
 %----------------------------------------
+%
+%
+%
+%
+%
+%%-----------Slide-----------------------------------
+%\begin{frame}[t]{Unregularized M-estimators}
+%
+%
+%
+%    \vspace{.2in}
+%
+%    \begin{block}{Optimal M-estimator}
+%        \begin{align*}
+%            \rho_{\text{opt}}(x) &= -\inf_y{\left[\ln(\zeta_{\hat{q}}(y))+\frac{(x-y)^2}{2 \hat{q}}\right]} & \zeta_{\hat{q}} &= f*\phi_{\hat{q}}
+%        \end{align*}
+%        \begin{align*}
+%           \hat{q} = \min{q} \quad \quad \text{s.t.} \quad q I_{q} &=\kappa & I_{q} = \int_{-\infty}^{\infty}{\frac{\zeta_{q}'^2(y)}{\zeta_{q}(y)}dy}
+%        \end{align*}
+%
+%
+%        \begin{itemize}
+%        \vspace{.1in}
+%        \item Best possible asymptotic Mean squared error for any convex M-estimator is $\hat{q}$
+%            \vspace{.1in}
+%        \item log-concave noise $f$ assumption
+%        \end{itemize}
+%
+%    \end{block}
+%
+%\end{frame}
+%%------------------------------------
+
+
+
+
+
+
+
 
 
 
