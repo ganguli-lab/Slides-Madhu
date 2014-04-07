@@ -100,6 +100,24 @@ E.g. $\rho(x) = x^2,|x|,-\ln f(x)$
 \begin{frame}{Maximum Likelihood}
 
 
+$P$ fixed, $N\ra \infty$
+
+\begin{equation*}
+||\hat{w}-w^0||^2 = \frac{\left(\int{\psi(x)f(x)dx}\right)^2}{\int{\psi^2f(x)dx}}
+\end{equation*}
+
+$\psi = \frac{\partial}{\partial w} \rho$
+
+\vspace{.2in}
+Find $\rho_{\text{opt}} = -\ln f$
+
+
+\begin{equation*}
+\mathbf{\hat{w}}_{\text{ML}}=\arg\max_{\mathbf{w^0}}{P\left(\mathbf{y},\mathbf{X}|\mathbf{w^0}\right)} =\arg \min_{\mathbf{w}}{\left[ \sum_{i} {-\log f\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}\right]}
+\end{equation*}
+
+
+
 
 
 \end{frame}
@@ -388,18 +406,21 @@ How to choose $\rho$ to minimize $q$?
 
 
 %-------------------Frame---------------------
-\begin{frame}{Regularized M-estimation}
+\begin{frame}[t]{Regularized M-estimation}
+\note{Again we ask the same question, which M-estimator (strategy) minimizes q? Obviously it will depend on the distribution of noise and coefficients, in the next slide I'll show how.}
+\begin{equation*}
+y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad w_j^0\sim g, \epsilon_i \sim f
+\end{equation*}
 
-$w^0_j \sim  g$
-
+\vspace{.3in}
 \begin{equation*}
             \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
 \end{equation*}
 
-
+\vspace{.2in}
 \begin{center}
-        \includegraphics[width = .15\linewidth]{errorCircle.pdf}
-    \end{center}
+        \includegraphics[width = .25\linewidth]{errorCircle.pdf}
+\end{center}
 
 
 
@@ -455,18 +476,87 @@ $w^0_j \sim  g$
 
 %--------------------Frame-----------------------
 \begin{frame}{Unregularized M-estimator}
-
-
+    
+    
         \begin{center}
-            \includegraphics[width = .5\linewidth]{regularizedPlots.pdf}
+            \includegraphics[width = .7\linewidth]{regularizedPlots.pdf}
         \end{center}
+    
+
+\end{frame}
+%------------------------------------------------
 
 
+%--------------------Frame-----------------------
+\begin{frame}{M-estimator Comparison}
+
+
+\begin{center}
+    $\rho_{\text{MAP}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{MAP}}(x) = |x|$
+    
+    $ \rho_{\text{Ridge}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{Ridge}}(x) = \frac{x^2}{2}$
+\end{center}
+
+
+\vspace{.1in}
         \begin{center}
-            \includegraphics[width = .5\linewidth]{CompareM_est_redo.pdf}
+            \includegraphics[width = .55\linewidth]{CompareM_est_redo.pdf}
         \end{center}
 \end{frame}
 %------------------------------------------------
+
+
+
+
+%---------------------Slide----------------
+\begin{frame}{Future Directions- LN models}
+
+$y_i = \eta(X_i \cdot w^0) + \epsilon_i$
+
+
+\end{frame}
+%-----------------------------------------
+
+
+%---------------------Slide----------------
+\begin{frame}{Future Directions - Random Dimensionality Reduction}
+
+
+
+
+\end{frame}
+%-----------------------------------------
+
+
+%---------------------Slide----------------
+\begin{frame}{Future Directions - Phase Transitions in Clustering}
+
+
+
+
+\end{frame}
+%-----------------------------------------
+
+
+
+%---------------------Slide----------------
+\begin{frame}{Future Directions - Phase Transitions in Clustering}
+
+
+
+
+
+
+
+
+
+\end{frame}
+%-----------------------------------------
+
+
+
+
+
 
 
 

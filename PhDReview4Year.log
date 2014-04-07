@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.5.9)  6 APR 2014 23:45
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.5.9)  7 APR 2014 14:07
 entering extended mode
 **C:/Users/Madhu/Documents/Latex/Slides/PhD*4th*year*Review/PhDReview4Year.tex
 ("C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/PhDReview4Year.tex"
@@ -908,31 +908,38 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 {C:/Users/Madhu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 95.
+<neuronInference.pdf, id=81, 907.40012pt x 601.9356pt>
+File: neuronInference.pdf Graphic file (type pdf)
+
+<use neuronInference.pdf>
+Package pdftex.def Info: neuronInference.pdf used on input line 102.
+(pdftex.def)             Requested size: 68.45801pt x 45.40958pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 102.
 
 ("C:\Program Files\MiKTeX2 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 95.
+LaTeX Font Info:    Try loading font information for U+msb on input line 102.
 
 ("C:\Program Files\MiKTeX2 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 95.
+line 102.
 
 ("C:\Program Files\MiKTeX2 2.9\tex\latex\sansmathaccent\ot1mathkerncmss.fd"
 File: ot1mathkerncmss.fd 2012/04/26
 )
 [3
 
-] [4
+ <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/neuronInference.pdf
+>] [4
 
 ] [5
 
 ]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 172.
+LaTeX Font Warning: Command \small invalid in math mode on input line 201.
 
 [6
 
@@ -942,75 +949,105 @@ LaTeX Font Warning: Command \small invalid in math mode on input line 172.
 
 ] [9
 
-] [10
+] <L1_redo.pdf, id=291, 213.78503pt x 194.74907pt>
+File: L1_redo.pdf Graphic file (type pdf)
 
-] <errorCircle.pdf, id=303, 405.57773pt x 405.6091pt>
+<use L1_redo.pdf>
+Package pdftex.def Info: L1_redo.pdf used on input line 326.
+(pdftex.def)             Requested size: 111.24492pt x 101.33844pt.
+ <softThresold_redo.pdf, id=292, 214.58803pt x 194.92061pt>
+File: softThresold_redo.pdf Graphic file (type pdf)
+
+<use softThresold_redo.pdf>
+Package pdftex.def Info: softThresold_redo.pdf used on input line 326.
+(pdftex.def)             Requested size: 111.24492pt x 101.047pt.
+
+Overfull \hbox (51.3422pt too wide) in paragraph at lines 326--326
+[]$$[]$  
+ []
+
+
+Overfull \vbox (1.54297pt too high) detected at line 326
+ []
+
+[10
+
+ <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/L1_redo.pdf> <C:/Us
+ers/Madhu/Documents/Latex/Slides/PhD 4th year Review/softThresold_redo.pdf>] <e
+rrorCircle.pdf, id=366, 405.57773pt x 405.6091pt>
 File: errorCircle.pdf Graphic file (type pdf)
-
-<use errorCircle.pdf>
-Package pdftex.def Info: errorCircle.pdf used on input line 333.
+ <use errorCircle.pdf>
+Package pdftex.def Info: errorCircle.pdf used on input line 369.
 (pdftex.def)             Requested size: 102.68962pt x 102.69554pt.
- [11
+
+[11
 
  <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/errorCircle.pdf>] [
 12
 
-]
-<unRegNoiseOpt.pdf, id=376, 491.06778pt x 224.88058pt>
+] <unRegNoiseOpt.pdf, id=439, 491.06778pt x 224.88058pt>
 File: unRegNoiseOpt.pdf Graphic file (type pdf)
- <use unRegNoiseOpt.pdf>
-Package pdftex.def Info: unRegNoiseOpt.pdf used on input line 386.
-(pdftex.def)             Requested size: 171.14764pt x 78.37311pt.
 
-<opt_loss.pdf, id=377, 321.2pt x 240.9pt>
+<use unRegNoiseOpt.pdf>
+Package pdftex.def Info: unRegNoiseOpt.pdf used on input line 422.
+(pdftex.def)             Requested size: 171.14764pt x 78.37311pt.
+ <opt_loss.pdf, id=440, 321.2pt x 240.9pt>
 File: opt_loss.pdf Graphic file (type pdf)
- <use opt_loss.pdf>
-Package pdftex.def Info: opt_loss.pdf used on input line 386.
+
+<use opt_loss.pdf>
+Package pdftex.def Info: opt_loss.pdf used on input line 422.
 (pdftex.def)             Requested size: 171.14764pt x 128.36375pt.
  [13
 
  <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/unRegNoiseOpt.pdf> 
 <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/opt_loss.pdf>]
 File: errorCircle.pdf Graphic file (type pdf)
-
-<use errorCircle.pdf>
-Package pdftex.def Info: errorCircle.pdf used on input line 410.
+ <use errorCircle.pdf>
+Package pdftex.def Info: errorCircle.pdf used on input line 446.
 (pdftex.def)             Requested size: 85.57382pt x 85.57652pt.
  [14
 
 ] [15
 
 ]
-<regularizedPlots.pdf, id=555, 486.02211pt x 229.36882pt>
+<regularizedPlots.pdf, id=618, 486.02211pt x 229.36882pt>
 File: regularizedPlots.pdf Graphic file (type pdf)
 
 <use regularizedPlots.pdf>
-Package pdftex.def Info: regularizedPlots.pdf used on input line 468.
+Package pdftex.def Info: regularizedPlots.pdf used on input line 505.
 (pdftex.def)             Requested size: 239.60567pt x 113.07767pt.
  [16
 
  <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/regularizedPlots.pd
 f>]
-<CompareM_est_redo.pdf, id=653, 361.35pt x 281.05pt>
+<CompareM_est_redo.pdf, id=717, 361.35pt x 281.05pt>
 File: CompareM_est_redo.pdf Graphic file (type pdf)
 
 <use CompareM_est_redo.pdf>
-Package pdftex.def Info: CompareM_est_redo.pdf used on input line 487.
+Package pdftex.def Info: CompareM_est_redo.pdf used on input line 524.
 (pdftex.def)             Requested size: 188.26346pt x 146.42558pt.
  [17
 
  <C:/Users/Madhu/Documents/Latex/Slides/PhD 4th year Review/CompareM_est_redo.p
-df>]
+df>] [18
+
+] [19
+
+] [20
+
+] [21
+
+]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 501.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 501.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 582.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 582.
 
 ("C:\Users\Madhu\Documents\Latex\Slides\PhD 4th year Review\PhDReview4Year.aux"
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 501.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 501.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 582.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 582.
 Package rerunfilecheck Info: File `PhDReview4Year.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1018,32 +1055,34 @@ Package rerunfilecheck Info: File `PhDReview4Year.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 501.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 582.
  ) 
 Here is how much of TeX's memory you used:
- 15812 strings out of 494045
- 299239 string characters out of 3148388
+ 15852 strings out of 494045
+ 299821 string characters out of 3148388
  384414 words of memory out of 3000000
- 18674 multiletter control sequences out of 15000+200000
- 17796 words of font info for 64 fonts, out of 3000000 for 9000
+ 18701 multiletter control sequences out of 15000+200000
+ 19740 words of font info for 71 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  49i,22n,57p,462b,877s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
 rogram Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Prog
 ram Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fil
-es/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTe
-X2 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX2 2.9/f
-onts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsf
-onts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/
-cm/cmssi10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cms
-si8.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Pro
-gram Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on PhDReview4Year.pdf (17 pages, 427849 bytes).
+es/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
+eX2 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX2 2.9/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX2 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/ams
+fonts/cm/cmss8.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm
+/cmssbx10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmss
+i10.pfb><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmssi12.pf
+b><C:/Program Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/P
+rogram Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program 
+Files/MiKTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/Mi
+KTeX2 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on PhDReview4Year.pdf (21 pages, 526105 bytes).
 PDF statistics:
- 785 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 104 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 960 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
