@@ -1,1 +1,4 @@
 \beamer@endinputifotherversion {3.19pt}
+\beamer@sectionintoc {1}{Unregularized Theory}{4}{0}{1}
+\beamer@sectionintoc {2}{Regularized Theory}{13}{0}{2}
+\beamer@sectionintoc {3}{Future Extensions of High Dimensional M-estimation}{20}{0}{3}

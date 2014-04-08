@@ -20,6 +20,9 @@
 \DeclareMathOperator{\prox}{prox}
 \newcommand{\avg}[1]{\mbox{$\left\langle \, #1 \, \right\rangle$}}
 \newcommand{\qav}[1]{\mbox{$\left\langle\left\langle \, #1 \, \right\rangle\right\rangle$}}
+
+%\newcommand{\bold}[1]{\mbox{$\mathbf{#1}}$}
+
 \newcommand{\ra}{\rightarrow}
 
 
@@ -43,80 +46,99 @@
 
 %---------------------Frame----------------
 \begin{frame}{Outline}
-\begin{block}{Current Research}
-Optimal Tractable High Dimensional M-estimation
+\begin{block}{Current Research: High Dimensional M-estimation}
+\begin{enumerate}
+\vspace{.1in}
+\item Optimal Unregularized M-estimation
+\vspace{.1in}
+\item Optimal Regularized M-estimation
+\end{enumerate}
 \end{block}
+
 \vspace{.1in}
 \begin{block}{Future Directions}
     \begin{enumerate}
-        \item LN and GLM extensions of M-estimation also Optimal Signal Processing (Structured Coefficients)
-        \item Random Dimensionality Reduction
-        \item Phase transitions in clustering Behavior
-    \end{enumerate}
-\end{block}
-\vspace{.1in}
-\begin{block}{Previous Research and Future Plan}
-    \begin{enumerate}
-        \item Review Paper
-        \item Timeline
+    \vspace{.1in}
+        \item Extensions of High Dimensional M-estimation
+        \vspace{.1in}
+        \note{LN and GLM extensions of M-estimation and Optimal Signal Processing/Inference - General distributions}
+        \vspace{.1in}
+        \item Network Implementation of Compressed Sensing
+        \vspace{.1in}
+        \item Network Implementation of Reinforcement Learning (credit assignment)
     \end{enumerate}
 \end{block}
 \end{frame}
+%----------------------------------------------
+%\vspace{.1in}
+%\begin{block}{Previous Research and Future Plan}
+%    \begin{enumerate}
+%        \item Review Paper
+%        \item Timeline
+%    \end{enumerate}
+%\end{block}
+
 
 
 %------------Frame------------
-\begin{frame}{Problem Setup}
-
-\begin{flushright}
-\includegraphics[width = .2\linewidth]{neuronInference.pdf}
-\end{flushright}
+\begin{frame}[t]{Problem Setup}
 
 
+\parbox{.45\linewidth}{
 $y_i = \mathbf{X_i}\cdot \mathbf{w^0} + \epsilon_i \quad \quad i\in [1,\dots N]$
+}
+\parbox{.45\linewidth}{
+\begin{flushright}
+\includegraphics[width = .5\linewidth]{neuronInference.pdf}
+\end{flushright}
+}
+
 
 \begin{itemize}
 %\item Consider Statistical inference with $N$ data points and $P$ unknowns (predictors).
 
-
+\vspace{.05in}
 \item Noise $\epsilon_i \sim f$ not necessarily gaussian
-
+\vspace{.05in}
 \item (Easy) Classical Regime: $\kappa = P/N\ra 0$
+\vspace{.05in}
 \item (Hard) High Dimensional Regime: $\kappa = P/N \ne 0$
 
 \end{itemize}
 \vspace{.2in}
 
-
-
-\vspace{.2in}
-
 We want to find $\mathbf{w^0}$
+\end{frame}
+%-----------------------------
 
 
+
+\section{Unregularized Theory}
+\frame{\sectionpage}
+
+
+
+%----------------Frame-------------------
+\begin{frame}{M-estimation and Maximum Likelihood}
+
+\begin{block}{M-estimation}
 \begin{equation*}
 \mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{\left[ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}\right]}
 \end{equation*}
 
 E.g. $\rho(x) = x^2,|x|,-\log f(x)$
-
-\end{frame}
-%-----------------------------
-
-
-%----------------Frame-------------------
-\begin{frame}{Maximum Likelihood}
-
-
+\end{block}
+\vspace{.1in}
 $P$ fixed, $N\ra \infty$
 
 \begin{equation*}
-||\hat{w}-w^0||^2 = \frac{\left(\int{\psi(x)f(x)dx}\right)^2}{\int{\psi^2f(x)dx}}
+||\hat{w}-w^0||^2 = \frac{\left(\int{\psi(x)f(x)dx}\right)^2}{\int{\psi^2f(x)dx}} \quad\quad \psi = \frac{\partial}{\partial w} \rho
 \end{equation*}
 
-$\psi = \frac{\partial}{\partial w} \rho$
+%$\psi = \frac{\partial}{\partial w} \rho$
 
-\vspace{.2in}
-We find that $\rho_{\text{opt}} = -\log f$
+\vspace{.1in}
+$\psi_{\text{opt}} = \frac{f'}{f}$, $\rho_{\text{opt}} = -\log f$
 
 
 \begin{equation*}
@@ -132,115 +154,72 @@ We find that $\rho_{\text{opt}} = -\log f$
 
 
 
+%------------------------Slide------------------
+\begin{frame}{Sub-optimality of Maximum Likelihood in High Dimensions}
 
 
+\begin{center}
+\includegraphics[width = .7\linewidth]{elKaroui_MLsubopt.pdf}
 
 
+El Karoui, et. al. PNAS 2013
+\end{center}
 
 
-
-%-----------------Frame-------------
-\begin{frame}[t]{Classical vs High Dimensional Optimal M-estimation}
-
-%\note{Fisher information for convolved distribution}
-
-    \begin{block}{Classical}
-        \begin{itemize}
-        \item $N\ra \infty$, $P/N =\kappa \ra 0$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}} = -\log f$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
-        \vspace{.1in}
-        \end{itemize}
-
-    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
-    \end{block}
-
-
-    \begin{block}{High Dimensional}
-        \begin{itemize}
-        \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{\zeta'^2}{\zeta}}}$
-        \vspace{.1in}
-        \end{itemize}
-    \end{block}
-\end{frame}
-%------------------------------------
-
-
-
-
-
-%-----------Slide-----------------------------------
-\begin{frame}[t]{Adding a Regularizer}
-    \note{Maximum Likelihood is based on finding the mode of data given the coefficients. Especially in the high dimensional regime, where a prior can really help us, we want to find the mode of the coefficients given the data!}
-
-    \begin{equation*}
-        P(\mathbf{w^0}|\mathbf{X},\mathbf{y}) = \frac{P(\mathbf{X},\mathbf{y}|\mathbf{w^0})P(\mathbf{w^0})}{P(\mathbf{X},\mathbf{y})}\propto f(y-\mathbf{X}\cdot \mathbf{w^0})g(w^0)
-    \end{equation*}
-    
-    $w^0_j \sim g$
-
-    \begin{block}{Maximum a Priori}
-        \begin{equation*}
-            \small{\mathbf{\hat{w}_{\text{MAP}}} =\arg\min_{\mathbf{w}}{\left[\sum_i{-\log f(y_i - \mathbf{X}_i\cdot \mathbf{w})} +\sum_j{-\log{g(w_j)}}\right]}}
-        \end{equation*}
-    \end{block}
-
-    \begin{block}{Regularized M-estimation}
-    \begin{equation*}
-        \mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{\left[ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)} + \sum_j{\sigma(w_j)}\right]}
-    \end{equation*}
-    Note separability. Solvable for convex $\sigma,\rho$
-    \end{block}
 
 \end{frame}
-%------------------------------------
+%--------------------------------------------
 
 
 
-%-------------Frame--------------------
-\begin{frame}{Motivation}
+%%-----------------Frame-------------
+%\begin{frame}[t]{Classical vs High Dimensional Optimal M-estimation}
+%
+%%\note{Fisher information for convolved distribution}
+%
+%    \begin{block}{Classical}
+%        \begin{itemize}
+%        \item $N\ra \infty$, $P/N =\kappa \ra 0$
+%        \vspace{.1in}
+%        \item $\rho_{\text{opt}} = -\log f$
+%        \vspace{.1in}
+%        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
+%        \vspace{.1in}
+%        \end{itemize}
+%
+%    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
+%    \end{block}
+%
+%
+%    \begin{block}{High Dimensional}
+%        \begin{itemize}
+%        \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
+%        \vspace{.1in}
+%        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
+%        \vspace{.1in}
+%        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{\zeta'^2}{\zeta}}}$
+%        \vspace{.1in}
+%        \end{itemize}
+%    \end{block}
+%\end{frame}
+%%------------------------------------
 
-\begin{equation*}
-            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
-\end{equation*}
-\vspace{.1in}
-
-\begin{block}{Applications}
-\begin{itemize}
-\vspace{.1in}
- \item{Maximum Likelihood (ML) and MAP commonly applied to High Dimensional Bio-informatics problems, where we should expect poor performance}
-     \vspace{.1in}
- \item{Deriving/Understanding the Optimal M-estimator has potential applications for statistical inference and signal processing.}
-     \vspace{.1in}
- \item{ Tractability of this form of optimization popular: Compressed Sensing, LASSO, Elastic Net}
-\end{itemize}
-\end{block}
-
-
-%\includegraphics[width = .4\linewidth]{neuronInference.pdf}
-
-\end{frame}
-%----------------------------------------
 
 
 %------------------------Frame------------
 \begin{frame}[t]{Statistical Physics Formulation}
-Define a spin glass system to solve M-estimator inference
+\begin{center}
+$\mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}}$
+\end{center}
 
 \begin{block}{Spin Glass System}
-Define continuous spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$. Let the Energy of the system be a function of these spins
+Define spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$ and Energy of system of spins:
 
 \begin{equation*}
- E_{\boldsymbol{\Lambda}}(\mathbf{u})=\sum_i{\rho\left(\mathbf{X}_{i}\cdot \mathbf{u} +\epsilon_i\right)}+\sum_a{\sigma(w^0_a-u_a)}
+ E_{\boldsymbol{\Lambda}}(\mathbf{u})=\sum_i{\rho\left(\mathbf{X}_{i}\cdot \mathbf{u} +\epsilon_i\right)}
 \end{equation*}
 
-This in turn induces an equilibrium probability distribution on the state
+Energy and temperature induce an equilibrium Gibbs distribution
 
 \begin{align*}
 P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\boldsymbol{\Lambda}}} & Z_{\boldsymbol{\Lambda}} &= \int{e^{-\beta E_{\boldsymbol{\Lambda}} (\mathbf{u}) }du}
@@ -268,6 +247,10 @@ Falls out quite naturally from replica theory.
 
 Order parameters are important because $q_0$ is the average variance in each error spin.}
 
+\begin{center}
+$q = \frac{1}{P} \sum_{j=1}^P{\avg{u_j}_{\text{G}}^2}$
+\end{center}
+
 \begin{block}{\begin{center}Coupled Equations Relating Order Parameters $q,c$ \end{center}}
 \begin{equation*}
 \qav{\left(\prox_{c\rho}{(\sqrt{q} z + \epsilon)} -\sqrt{q}z -\epsilon\right)^2}_{z,\epsilon}= \kappa q
@@ -280,13 +263,15 @@ Order parameters are important because $q_0$ is the average variance in each err
 \end{block}
 
 \vspace{.1in}
-
+\parbox{.45\linewidth}{
 \begin{itemize}
     \item $X_{ij}\in \mathcal{N}(0,1/P)$
     \item $\rho$ convex
     \item $\epsilon_i\sim f$ iid
 \end{itemize}
-
+}
+\parbox{.45\linewidth}{
+}
 \end{frame}
 %------------------------------
 
@@ -422,6 +407,65 @@ How to choose $\rho$ to minimize $q$?
 \end{frame}
 %------------------------------------------------
 
+\section{Regularized Theory}
+\frame{\sectionpage}
+
+
+
+
+
+
+%-----------Slide-----------------------------------
+\begin{frame}[t]{Adding a Regularizer}
+    \note{Maximum Likelihood is based on finding the mode of data given the coefficients. Especially in the high dimensional regime, where a prior can really help us, we want to find the mode of the coefficients given the data!}
+
+    \begin{equation*}
+        P(\mathbf{w^0}|\mathbf{X},\mathbf{y}) = \frac{P(\mathbf{X},\mathbf{y}|\mathbf{w^0})P(\mathbf{w^0})}{P(\mathbf{X},\mathbf{y})}\propto \prod_i{f(y_i-\mathbf{X_i}\cdot \mathbf{w^0})}\prod_j{g(w_j^0)}
+    \end{equation*}
+
+    \begin{block}{Maximum a Priori}
+        \begin{equation*}
+            \small{\mathbf{\hat{w}_{\text{MAP}}} =\arg\min_{\mathbf{w}}{\left[\sum_i{-\log f(y_i - \mathbf{X}_i\cdot \mathbf{w})} +\sum_j{-\log{g(w_j)}}\right]}}
+        \end{equation*}
+    \end{block}
+
+    \begin{block}{Regularized M-estimation}
+    \begin{equation*}
+        \mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{\left[ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)} + \sum_j{\sigma(w_j)}\right]}
+    \end{equation*}
+    Note separability. Solvable for convex $\sigma,\rho$
+    \end{block}
+
+\end{frame}
+%------------------------------------
+
+
+%-------------Frame--------------------
+\begin{frame}{Motivation}
+
+\begin{equation*}
+            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
+\end{equation*}
+\vspace{.1in}
+
+\begin{block}{Applications}
+\begin{itemize}
+\vspace{.1in}
+ \item{Maximum Likelihood (ML) and MAP commonly applied to High Dimensional Bio-informatics problems, where we should expect poor performance}
+     \vspace{.1in}
+ \item{Deriving/Understanding the Optimal M-estimator has potential applications for statistical inference and signal processing.}
+     \vspace{.1in}
+ \item{ Tractability of this form of optimization popular: Compressed Sensing, LASSO, Elastic Net}
+\end{itemize}
+\end{block}
+
+
+%\includegraphics[width = .4\linewidth]{neuronInference.pdf}
+
+\end{frame}
+%----------------------------------------
+
+
 
 %-------------------Frame---------------------
 \begin{frame}[t]{Regularized M-estimation}
@@ -431,8 +475,11 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 \end{equation*}
 
 \vspace{.3in}
+%\begin{equation*}
+%            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
+%\end{equation*}
 \begin{equation*}
-            \mathbf{\hat{w}} = \arg\min_\mathbf{w} {\sum_a{\rho(y_a - \mathbf{X_a} \cdot\mathbf{ w})} + \sum_i{\sigma(w_i)}}
+ E_{\boldsymbol{\Lambda}}(\mathbf{u})=\sum_i{\rho\left(\mathbf{X}_{i}\cdot \mathbf{u} +\epsilon_i\right)}+\sum_a{\sigma(w^0_a-u_a)}
 \end{equation*}
 
 \vspace{.2in}
@@ -470,14 +517,20 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 %\end{split}
 %\end{equation}
 
-
+\parbox{.45\linewidth}{
 \begin{equation*}
 \begin{split}
 \tilde{q}_0,\tilde{a} &= \arg\min_{q_0,a}{q_0} \\
-\text{s.t. }\quad  a I_{q_0} & = \kappa,\quad a^2 J_a = a-q_0
+\text{s.t. }\quad  a I_{q_0} & = \kappa,\quad a^2 J_a = a-q_0 \\
 \label{unregopt}
 \end{split}
 \end{equation*}
+}
+\parbox{.45\linewidth}{
+\begin{equation*}
+\quad I_{q} = \int{\frac{\zeta_q'^2}{\zeta_q}}, \quad J_{a} = \int{\frac{\xi_a'^2}{\xi_a}}
+\end{equation*}
+}
 
 
 \begin{itemize}
@@ -493,10 +546,10 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 
 
 
+
+
 %--------------------Frame-----------------------
 \begin{frame}{Unregularized M-estimator}
-
-
         \begin{center}
             \includegraphics[width = .7\linewidth]{regularizedPlots.pdf}
         \end{center}
@@ -508,14 +561,11 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 
 %--------------------Frame-----------------------
 \begin{frame}{M-estimator Comparison}
-
-
 \begin{center}
     $\rho_{\text{MAP}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{MAP}}(x) = |x|$
 
     $ \rho_{\text{Ridge}}(x) = \frac{x^2}{2} \quad\quad \sigma_{\text{Ridge}}(x) = \frac{x^2}{2}$
 \end{center}
-
 
 \vspace{.1in}
         \begin{center}
@@ -525,20 +575,38 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 %------------------------------------------------
 
 
+\section{Future Extensions of High Dimensional M-estimation}
+\frame{\sectionpage}
 
 
 %---------------------Slide----------------
-\begin{frame}{Future Directions- LN models}
+\begin{frame}{Generalized Models}
 
-$y_i = \eta(X_i \cdot w^0) + \epsilon_i$
+\begin{equation*}
+y_i = \eta(\mathbf{X_i} \cdot \mathbf{w^0}) + \epsilon_i
+\end{equation*}
 
+
+\begin{equation*}
+\mathbf{\hat{w}} = \arg \min_{\mathbf{w}}{\left[\sum_i{\rho(y_i - \eta\left(\mathbf{X_i}\cdot \mathbf{w})\right)} + \sum_j{\sigma(w_j)}\right]}
+\end{equation*}
+
+
+
+
+
+
+\begin{equation*}
+E(\mathbf{w}) = \sum_i{\rho \left( \eta\left(\mathbf{X_i} \cdot \mathbf{w^0}\right)- \eta\left(\mathbf{X_i} \cdot (\mathbf{w^0}-\mathbf{u}) + \epsilon_i \right)\right)} + \sum_j{\sigma(w_j^0-u_j)}
+\end{equation*}
 
 \end{frame}
 %-----------------------------------------
 
 
+
 %---------------------Slide----------------
-\begin{frame}{Future Directions - Random Dimensionality Reduction}
+\begin{frame}{}
 
 
 
