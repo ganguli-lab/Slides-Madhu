@@ -48,19 +48,25 @@
 \begin{frame}{Outline}
 \begin{block}{Current Research: High Dimensional M-estimation}
 \begin{enumerate}
+\vspace{.1in}
 \item Optimal Unregularized M-estimation
+\vspace{.1in}
 \item Optimal Regularized M-estimation
 \end{enumerate}
 \end{block}
+
 \vspace{.1in}
 \begin{block}{Future Directions}
     \begin{enumerate}
-        \item LN and GLM extensions of M-estimation
-        \item Optimal Signal Processing (Structured Coefficients)
-        \item Network Implementation of Compressed Sensing
-        \item Network Implementation of Reinforcement Learning (credit assignment)
+    \vspace{.1in}
+        \item Extensions of High Dimensional M-estimation
+        \vspace{.1in}
+        \note{LN and GLM extensions of M-estimation and Optimal Signal Processing/Inference - General distributions}
+        \item Network Implementation of Learning
     \end{enumerate}
 \end{block}
+\end{frame}
+%----------------------------------------------
 %\vspace{.1in}
 %\begin{block}{Previous Research and Future Plan}
 %    \begin{enumerate}
@@ -68,11 +74,62 @@
 %        \item Timeline
 %    \end{enumerate}
 %\end{block}
+
+
+
+
+
+%----------------Slide--------------
+\begin{frame}{Introduction High Dimensional Inference}
+
+\parbox{.70\linewidth}{
+
+$P$ = Number of Dimensions (Predictors)\\
+$N$ = Number of data points 
+}
+\parbox{.25\linewidth}{
+$\kappa = P/N$
+}
+\begin{columns}[t]
+\begin{column}{.45\textwidth}
+\begin{block}{Classical Statistics}
+\vspace{.2in}
+ $P = O(1)$ \\
+ \vspace{.05in}
+ $N \ra \infty$ \\
+ \vspace{.05in}
+ $P/N = \kappa \ra 0$
+\end{block}
+\begin{center}
+\vspace{.1in}
+\includegraphics[width = .65\linewidth]{lowDim.pdf}
+\end{center}
+\end{column}
+\begin{column}{.45\textwidth}
+
+\begin{block}{Modern Statistics}
+\vspace{.2in}
+ $P = O(N)$ \\
+ \vspace{.05in}
+ $N \ra \infty$ \\
+ \vspace{.05in}
+ $P/N = \kappa \ra O(1)$
+\end{block}
+
+\vspace{.1in}
+\begin{center}
+\includegraphics[width = .65\linewidth]{modernStats.pdf}
+\end{center}
+
+\end{column}
+\end{columns}
+
 \end{frame}
+%------------------------------------
 
 
 %------------Frame------------
-\begin{frame}{Problem Setup}
+\begin{frame}[t]{Problem Setup}
 
 
 \parbox{.45\linewidth}{
@@ -88,42 +145,48 @@ $y_i = \mathbf{X_i}\cdot \mathbf{w^0} + \epsilon_i \quad \quad i\in [1,\dots N]$
 \begin{itemize}
 %\item Consider Statistical inference with $N$ data points and $P$ unknowns (predictors).
 
-
+\vspace{.05in}
 \item Noise $\epsilon_i \sim f$ not necessarily gaussian
-
+\vspace{.05in}
 \item (Easy) Classical Regime: $\kappa = P/N\ra 0$
+\vspace{.05in}
 \item (Hard) High Dimensional Regime: $\kappa = P/N \ne 0$
 
 \end{itemize}
 \vspace{.2in}
 
 We want to find $\mathbf{w^0}$
+\end{frame}
+%-----------------------------
 
 
+
+\section{Unregularized Theory}
+\frame{\sectionpage}
+
+
+
+%----------------Frame-------------------
+\begin{frame}{M-estimation and Maximum Likelihood}
+
+\begin{block}{M-estimation}
 \begin{equation*}
 \mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{\left[ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}\right]}
 \end{equation*}
 
 E.g. $\rho(x) = x^2,|x|,-\log f(x)$
-
-\end{frame}
-%-----------------------------
-
-
-%----------------Frame-------------------
-\begin{frame}{Maximum Likelihood}
-
-
+\end{block}
+\vspace{.1in}
 $P$ fixed, $N\ra \infty$
 
 \begin{equation*}
-||\hat{w}-w^0||^2 = \frac{\left(\int{\psi(x)f(x)dx}\right)^2}{\int{\psi^2f(x)dx}}
+||\hat{w}-w^0||^2 = \frac{\left(\int{\psi(x)f(x)dx}\right)^2}{\int{\psi^2f(x)dx}} \quad\quad \psi = \frac{\partial}{\partial w} \rho
 \end{equation*}
 
-$\psi = \frac{\partial}{\partial w} \rho$
+%$\psi = \frac{\partial}{\partial w} \rho$
 
-\vspace{.2in}
-We find that $\rho_{\text{opt}} = -\log f$
+\vspace{.1in}
+$\psi_{\text{opt}} = \frac{f'}{f}$, $\rho_{\text{opt}} = -\log f$
 
 
 \begin{equation*}
@@ -140,13 +203,15 @@ We find that $\rho_{\text{opt}} = -\log f$
 
 
 %------------------------Slide------------------
-\begin{frame}{Suboptimality of Maximum Likelihood in High Dimensions}
+\begin{frame}{Sub-optimality of Maximum Likelihood in High Dimensions}
 
 
+\begin{center}
+\includegraphics[width = .7\linewidth]{elKaroui_MLsubopt.pdf}
 
 
-
-
+El Karoui, et. al. PNAS 2013
+\end{center}
 
 
 
@@ -155,60 +220,54 @@ We find that $\rho_{\text{opt}} = -\log f$
 
 
 
-%-----------------Frame-------------
-\begin{frame}[t]{Classical vs High Dimensional Optimal M-estimation}
-
-%\note{Fisher information for convolved distribution}
-
-    \begin{block}{Classical}
-        \begin{itemize}
-        \item $N\ra \infty$, $P/N =\kappa \ra 0$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}} = -\log f$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
-        \vspace{.1in}
-        \end{itemize}
-
-    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
-    \end{block}
-
-
-    \begin{block}{High Dimensional}
-        \begin{itemize}
-        \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
-        \vspace{.1in}
-        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
-        \vspace{.1in}
-        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{\zeta'^2}{\zeta}}}$
-        \vspace{.1in}
-        \end{itemize}
-    \end{block}
-\end{frame}
-%------------------------------------
-
-
-
-
-
-
-
-
+%%-----------------Frame-------------
+%\begin{frame}[t]{Classical vs High Dimensional Optimal M-estimation}
+%
+%%\note{Fisher information for convolved distribution}
+%
+%    \begin{block}{Classical}
+%        \begin{itemize}
+%        \item $N\ra \infty$, $P/N =\kappa \ra 0$
+%        \vspace{.1in}
+%        \item $\rho_{\text{opt}} = -\log f$
+%        \vspace{.1in}
+%        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{f'^2}{f}}}$
+%        \vspace{.1in}
+%        \end{itemize}
+%
+%    %\begin{flushright} $\epsilon_a \sim f$ \end{flushright}
+%    \end{block}
+%
+%
+%    \begin{block}{High Dimensional}
+%        \begin{itemize}
+%        \item $N,P\ra \infty$, $P/N =\kappa \in [0,1]$
+%        \vspace{.1in}
+%        \item $\rho_{\text{opt}}(x) = -\inf_y{\left[\ln(\zeta(y))+\frac{(x-y)^2}{2 \hat{q}_0}\right]} \quad \quad \quad \quad \zeta = f*\phi_{\hat{q}_0}$
+%        \vspace{.1in}
+%        \item $\qav{(\hat{w}_i-w^0_i)^2} \ge \frac{\kappa}{\int{\frac{\zeta'^2}{\zeta}}}$
+%        \vspace{.1in}
+%        \end{itemize}
+%    \end{block}
+%\end{frame}
+%%------------------------------------
 
 
 
 %------------------------Frame------------
 \begin{frame}[t]{Statistical Physics Formulation}
-Define a spin glass system to solve M-estimator inference
+\begin{center}
+$\mathbf{\hat{w}}=\arg \min_{\mathbf{w}}{ \sum_{i} {\rho\left( y_i - \mathbf{X}_{i} \cdot \mathbf{w}\right)}}$
+\end{center}
 
 \begin{block}{Spin Glass System}
-Define continuous spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$. Let the Energy of the system be a function of these spins
+Define spins $\mathbf{u}=\mathbf{w^0}-\mathbf{w}$ and Energy of system of spins:
 
 \begin{equation*}
  E_{\boldsymbol{\Lambda}}(\mathbf{u})=\sum_i{\rho\left(\mathbf{X}_{i}\cdot \mathbf{u} +\epsilon_i\right)}
 \end{equation*}
 
-This in turn induces an equilibrium probability distribution on the state
+Energy and temperature induce an equilibrium Gibbs distribution
 
 \begin{align*}
 P_{G}(\mathbf{u}) &= \frac{e^{-\beta E_{\boldsymbol{\Lambda}}(\mathbf{u})}}{Z_{\boldsymbol{\Lambda}}} & Z_{\boldsymbol{\Lambda}} &= \int{e^{-\beta E_{\boldsymbol{\Lambda}} (\mathbf{u}) }du}
@@ -236,6 +295,10 @@ Falls out quite naturally from replica theory.
 
 Order parameters are important because $q_0$ is the average variance in each error spin.}
 
+\begin{center}
+$q = \frac{1}{P} \sum_{j=1}^P{\avg{u_j}_{\text{G}}^2}$
+\end{center}
+
 \begin{block}{\begin{center}Coupled Equations Relating Order Parameters $q,c$ \end{center}}
 \begin{equation*}
 \qav{\left(\prox_{c\rho}{(\sqrt{q} z + \epsilon)} -\sqrt{q}z -\epsilon\right)^2}_{z,\epsilon}= \kappa q
@@ -256,7 +319,6 @@ Order parameters are important because $q_0$ is the average variance in each err
 \end{itemize}
 }
 \parbox{.45\linewidth}{
-$q = \qav{\avg{u}^2}$
 }
 \end{frame}
 %------------------------------
@@ -561,40 +623,83 @@ y_i = \mathbf{X}_i \cdot \mathbf{w^0} + \epsilon_i \quad \quad \quad \quad \quad
 %------------------------------------------------
 
 
-
-%---------------------Slide----------------
-\begin{frame}{Future Directions- LN models}
-
-$y_i = \eta(X_i \cdot w^0) + \epsilon_i$
-
-
-\end{frame}
-%-----------------------------------------
+\section{Future Extensions of High Dimensional M-estimation}
+\frame{\sectionpage}
 
 
 %---------------------Slide----------------
-\begin{frame}{Future Directions - Random Dimensionality Reduction}
+\begin{frame}{Generalized Models}
+
+\begin{equation*}
+y_i = \eta(\mathbf{X_i} \cdot \mathbf{w^0}) + \epsilon_i
+\end{equation*}
 
 
+\begin{equation*}
+\mathbf{\hat{w}} = \arg \min_{\mathbf{w}}{\left[\sum_i{\rho(y_i - \eta\left(\mathbf{X_i}\cdot \mathbf{w})\right)} + \sum_j{\sigma(w_j)}\right]}
+\end{equation*}
 
+\vspace{.2in}
 
-\end{frame}
-%-----------------------------------------
-
-
-%---------------------Slide----------------
-\begin{frame}{Future Directions - Phase Transitions in Clustering}
-
-
-
-
+\begin{block}{Energy Function}
+\begin{equation*}
+E(\mathbf{w}) = \sum_i{\rho \left( \eta\left(\mathbf{X_i} \cdot \mathbf{w^0}\right)- \eta\left(\mathbf{X_i} \cdot (\mathbf{w^0}-\mathbf{u}) + \epsilon_i \right)\right)} + \sum_j{\sigma(w_j^0-u_j)}
+\end{equation*}
+\end{block}
 \end{frame}
 %-----------------------------------------
 
 
 
 %---------------------Slide----------------
-\begin{frame}{Future Directions - Phase Transitions in Clustering}
+\begin{frame}{A Theory for Non log-concave Noise?}
+
+
+\begin{itemize}
+
+\item For non log-concave noise, we cannot naively expect $\rho_{\text{opt}}$ to be optimal, because it may be non-convex and thus violate the RS assumptions used to derive it.
+
+\vspace{.2in}
+
+\item An alternative perform a numerical optimization over a parameterized set of convex functions.
+
+
+\vspace{.2in}
+
+\item This same concept could be applied to find better alternatives to compressed sensing, or other convex inference algorithms
+
+
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------
+
+
+\section{Possible Network Learning Algorithms}
+\frame{\sectionpage}
+
+
+%---------------------Slide----------------
+\begin{frame}{Local Reinforcement Learning through Noise Injection}
+
+\begin{center}
+
+REINFORCE algorithm
+\includegraphics[width = .65\textwidth]{fwdError.pdf}
+\end{center}
+
+%\parbox{.45\textwidth}{
+%\begin{center}
+%\includegraphics[width = .65\textwidth]{BackwError.pdf}
+%\end{center}
+%}\parbox{.45\textwidth}{
+%\begin{center}
+%\includegraphics[width = .65\textwidth]{fwdError.pdf}
+%\end{center}
+%}
+
+
+
 \end{frame}
 %-----------------------------------------
 
@@ -603,6 +708,32 @@ $y_i = \eta(X_i \cdot w^0) + \epsilon_i$
 
 
 
+\begin{frame}{Acknowledgements}
+
+\begin{block}{Committee}
+Surya Ganguli \\
+Daniel Fisher \\
+Stephen Baccus
+\end{block}
+
+
+\begin{block}{Ganguli Lab}
+Subhaneil Lahiri\\
+Jascha Sohl-Dickstein\\
+Peiran Gao\\
+Niru Maheswaranathan \\
+Ben Poole \\
+Kiah Hardcastle
+\end{block}
+
+\begin{block}{Funding}
+Stanford Graduate Fellowship \\
+Mind Brain Computation IGERT
+\end{block}
+
+
+
+\end{frame}
 
 
 

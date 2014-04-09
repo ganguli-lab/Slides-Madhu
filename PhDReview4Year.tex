@@ -62,10 +62,7 @@
         \item Extensions of High Dimensional M-estimation
         \vspace{.1in}
         \note{LN and GLM extensions of M-estimation and Optimal Signal Processing/Inference - General distributions}
-        \vspace{.1in}
-        \item Network Implementation of Compressed Sensing
-        \vspace{.1in}
-        \item Network Implementation of Reinforcement Learning (credit assignment)
+        \item Network Implementation of Learning
     \end{enumerate}
 \end{block}
 \end{frame}
@@ -78,6 +75,57 @@
 %    \end{enumerate}
 %\end{block}
 
+
+
+
+
+%----------------Slide--------------
+\begin{frame}{Introduction High Dimensional Inference}
+
+\parbox{.70\linewidth}{
+
+$P$ = Number of Dimensions (Predictors)\\
+$N$ = Number of data points 
+}
+\parbox{.25\linewidth}{
+$\kappa = P/N$
+}
+\begin{columns}[t]
+\begin{column}{.45\textwidth}
+\begin{block}{Classical Statistics}
+\vspace{.2in}
+ $P = O(1)$ \\
+ \vspace{.05in}
+ $N \ra \infty$ \\
+ \vspace{.05in}
+ $P/N = \kappa \ra 0$
+\end{block}
+\begin{center}
+\vspace{.1in}
+\includegraphics[width = .65\linewidth]{lowDim.pdf}
+\end{center}
+\end{column}
+\begin{column}{.45\textwidth}
+
+\begin{block}{Modern Statistics}
+\vspace{.2in}
+ $P = O(N)$ \\
+ \vspace{.05in}
+ $N \ra \infty$ \\
+ \vspace{.05in}
+ $P/N = \kappa \ra O(1)$
+\end{block}
+
+\vspace{.1in}
+\begin{center}
+\includegraphics[width = .65\linewidth]{modernStats.pdf}
+\end{center}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+%------------------------------------
 
 
 %------------Frame------------
@@ -591,43 +639,91 @@ y_i = \eta(\mathbf{X_i} \cdot \mathbf{w^0}) + \epsilon_i
 \mathbf{\hat{w}} = \arg \min_{\mathbf{w}}{\left[\sum_i{\rho(y_i - \eta\left(\mathbf{X_i}\cdot \mathbf{w})\right)} + \sum_j{\sigma(w_j)}\right]}
 \end{equation*}
 
+\vspace{.2in}
 
-
-
-
-
+\begin{block}{Energy Function}
 \begin{equation*}
 E(\mathbf{w}) = \sum_i{\rho \left( \eta\left(\mathbf{X_i} \cdot \mathbf{w^0}\right)- \eta\left(\mathbf{X_i} \cdot (\mathbf{w^0}-\mathbf{u}) + \epsilon_i \right)\right)} + \sum_j{\sigma(w_j^0-u_j)}
 \end{equation*}
-
+\end{block}
 \end{frame}
 %-----------------------------------------
 
 
 
 %---------------------Slide----------------
-\begin{frame}{}
+\begin{frame}{A Theory for Non log-concave Noise?}
 
 
+\begin{itemize}
 
+\item For non log-concave noise, we cannot naively expect $\rho_{\text{opt}}$ to be optimal, because it may be non-convex and thus violate the RS assumptions used to derive it.
+
+\vspace{.2in}
+
+\item An alternative perform a numerical optimization over a parameterized set of convex functions.
+
+
+\vspace{.2in}
+
+\item This same concept could be applied to find better alternatives to compressed sensing, or other convex inference algorithms
+
+
+\end{itemize}
 
 \end{frame}
 %-----------------------------------------
+
+
+\section{Possible Network Learning Algorithms}
+\frame{\sectionpage}
 
 
 %---------------------Slide----------------
-\begin{frame}{Future Directions - Phase Transitions in Clustering}
+\begin{frame}{Local Reinforcement Learning through Noise Injection}
+
+\begin{center}
+
+REINFORCE Algorithm\quad \quad \quad \quad \quad $E(\mathbf{W},\mathbf{x^0})$\\
+
+\includegraphics[width = .55\textwidth]{fwdError.pdf}
+
+\end{center}
 
 
+Injecting Noise $\eta$ into a single synapse $W_i$ gives
 
-
+\begin{equation*}
+\Delta E \approx \frac{\partial E}{\partial W_i} \eta \implies \avg{\eta\Delta E } = \frac{\partial E}{\partial W_i}
+\end{equation*}
 \end{frame}
 %-----------------------------------------
 
 
 
 %---------------------Slide----------------
-\begin{frame}{Future Directions - Phase Transitions in Clustering}
+\begin{frame}[t]{Local Reinforcement Learning through Noise Injection}
+
+\begin{center}
+
+REINFORCE Algorithm\quad \quad \quad \quad \quad $E(\mathbf{W},\mathbf{x^0})$\\
+
+\includegraphics[width = .40\textwidth]{fwdError.pdf}
+
+\end{center}
+
+Number of Synapses = S
+\vspace{.1in}
+\begin{itemize}
+\item Adding noise to each synapse individually O(S) updates
+\item Adding noise to every synapse increases SNR. Fails catastrophically requiring integrating signals over O(S) updates
+\item One idea is to use reinforcement learning to intelligently modify weights based on past Errors and Actions
+\end{itemize}
+%Injecting Noise $\eta$ into a single synapse $W_i$ gives
+%
+%\begin{equation*}
+%\Delta E \approx \frac{\partial E}{\partial W_i} \eta \implies \avg{\eta\Delta E } = \frac{\partial E}{\partial W_i}
+%\end{equation*}
 \end{frame}
 %-----------------------------------------
 
@@ -635,7 +731,32 @@ E(\mathbf{w}) = \sum_i{\rho \left( \eta\left(\mathbf{X_i} \cdot \mathbf{w^0}\rig
 
 
 
+\begin{frame}{Acknowledgements}
 
+\begin{block}{Committee}
+Surya Ganguli \\
+Daniel Fisher \\
+Stephen Baccus
+\end{block}
+
+
+\begin{block}{Ganguli Lab}
+Subhaneil Lahiri\\
+Jascha Sohl-Dickstein\\
+Peiran Gao\\
+Niru Maheswaranathan \\
+Ben Poole \\
+Kiah Hardcastle
+\end{block}
+
+\begin{block}{Funding}
+Stanford Graduate Fellowship \\
+Mind Brain Computation IGERT
+\end{block}
+
+
+
+\end{frame}
 
 
 

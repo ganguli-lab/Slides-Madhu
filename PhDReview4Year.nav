@@ -5,11 +5,11 @@
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {0}{0}{3}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\sectionentry {1}{Unregularized Theory}{4}{Unregularized Theory}{0}}
-\headcommand {\beamer@sectionpages {1}{3}}
-\headcommand {\beamer@subsectionpages {1}{3}}
-\headcommand {\slideentry {1}{0}{4}{4/4}{}{0}}
+\headcommand {\slideentry {0}{0}{4}{4/4}{}{0}}
 \headcommand {\beamer@framepages {4}{4}}
+\headcommand {\sectionentry {1}{Unregularized Theory}{5}{Unregularized Theory}{0}}
+\headcommand {\beamer@sectionpages {1}{4}}
+\headcommand {\beamer@subsectionpages {1}{4}}
 \headcommand {\slideentry {1}{0}{5}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\slideentry {1}{0}{6}{6/6}{}{0}}
@@ -26,11 +26,11 @@
 \headcommand {\beamer@framepages {11}{11}}
 \headcommand {\slideentry {1}{0}{12}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\sectionentry {2}{Regularized Theory}{13}{Regularized Theory}{0}}
-\headcommand {\beamer@sectionpages {4}{12}}
-\headcommand {\beamer@subsectionpages {4}{12}}
-\headcommand {\slideentry {2}{0}{13}{13/13}{}{0}}
+\headcommand {\slideentry {1}{0}{13}{13/13}{}{0}}
 \headcommand {\beamer@framepages {13}{13}}
+\headcommand {\sectionentry {2}{Regularized Theory}{14}{Regularized Theory}{0}}
+\headcommand {\beamer@sectionpages {5}{13}}
+\headcommand {\beamer@subsectionpages {5}{13}}
 \headcommand {\slideentry {2}{0}{14}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
 \headcommand {\slideentry {2}{0}{15}{15/15}{}{0}}
@@ -43,21 +43,30 @@
 \headcommand {\beamer@framepages {18}{18}}
 \headcommand {\slideentry {2}{0}{19}{19/19}{}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\sectionentry {3}{Future Extensions of High Dimensional M-estimation}{20}{Future Extensions of High Dimensional M-estimation}{0}}
-\headcommand {\beamer@sectionpages {13}{19}}
-\headcommand {\beamer@subsectionpages {13}{19}}
-\headcommand {\slideentry {3}{0}{20}{20/20}{}{0}}
+\headcommand {\slideentry {2}{0}{20}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
+\headcommand {\sectionentry {3}{Future Extensions of High Dimensional M-estimation}{21}{Future Extensions of High Dimensional M-estimation}{0}}
+\headcommand {\beamer@sectionpages {14}{20}}
+\headcommand {\beamer@subsectionpages {14}{20}}
 \headcommand {\slideentry {3}{0}{21}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
 \headcommand {\slideentry {3}{0}{22}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
 \headcommand {\slideentry {3}{0}{23}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {3}{0}{24}{24/24}{}{0}}
+\headcommand {\sectionentry {4}{Possible Network Learning Algorithms}{24}{Possible Network Learning Algorithms}{0}}
+\headcommand {\beamer@sectionpages {21}{23}}
+\headcommand {\beamer@subsectionpages {21}{23}}
+\headcommand {\slideentry {4}{0}{24}{24/24}{}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\beamer@partpages {1}{24}}
-\headcommand {\beamer@subsectionpages {20}{24}}
-\headcommand {\beamer@sectionpages {20}{24}}
-\headcommand {\beamer@documentpages {24}}
-\headcommand {\def \inserttotalframenumber {24}}
+\headcommand {\slideentry {4}{0}{25}{25/25}{}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {4}{0}{26}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {4}{0}{27}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@partpages {1}{27}}
+\headcommand {\beamer@subsectionpages {24}{27}}
+\headcommand {\beamer@sectionpages {24}{27}}
+\headcommand {\beamer@documentpages {27}}
+\headcommand {\def \inserttotalframenumber {27}}
